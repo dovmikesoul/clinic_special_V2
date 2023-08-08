@@ -1,0 +1,37 @@
+<head>
+   <title>Usuarios</title>
+</head>
+{% include 'header.html' %}
+    <div class="card">
+        <div class="card-header">
+            <a href="{{ url_for('create_user') }}" class="btn btn-success">Agregar usuario</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Foto</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{user[0]}}</td>
+                            <td><img  class="img-thumbnail" src="uploads/{{user[3]}}" style="width:100px;height:100px;" alt="Foto del empleado"></td>
+                            <td>{{user[1]}}</td>
+                            <td>{{user[2]}}</td>
+                            <td> 
+                                <a class="btn btn-warning" href="users/edit/{{ user[0] }}">Editar</a> |
+                                <a onclick="return confirm('¿Desea borrar el registro?')" class="btn btn-danger" href="users/destroy/{{ user[0] }}">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% include 'footer.html' %}

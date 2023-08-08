@@ -1,0 +1,37 @@
+<head>
+   <title>Pacientes</title>
+</head>
+{% include 'header.html' %}
+    <div class="card">
+        <div class="card-header">
+            <a href="{{ url_for('create_pacient') }}" class="btn btn-success">Agregar paciente</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Foto</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for pacient in pacients %}
+                        <tr>
+                            <td>{{pacient[0]}}</td>
+                            <td><img  class="img-thumbnail" src="uploads/{{pacient[3]}}" style="width:100px;height:100px;" alt="Foto del empleado"></td>
+                            <td>{{pacient[1]}}</td>
+                            <td>{{pacient[2]}}</td>
+                            <td> 
+                                <a class="btn btn-warning" href="pacients/edit/{{ pacient[0] }}">Editar</a> |
+                                <a onclick="return confirm('¿Desea borrar el registro?')" class="btn btn-danger" href="pacients/destroy/{{ pacient[0] }}">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% include 'footer.html' %}

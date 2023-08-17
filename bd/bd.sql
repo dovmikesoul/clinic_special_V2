@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: clinic_special
+-- Host: 127.0.0.1    Database: clinic_special_v2
 -- ------------------------------------------------------
 -- Server version	8.0.29
 
@@ -37,7 +37,6 @@ CREATE TABLE `pacients` (
 
 LOCK TABLES `pacients` WRITE;
 /*!40000 ALTER TABLE `pacients` DISABLE KEYS */;
-INSERT INTO `pacients` VALUES (1,'mike','miguel.perez25@uanch.mx','2023201208136123--thrill-kill.png'),(4,'asd','asd','2023204221resident evil directors cut.png'),(5,'egfddsa','asd','2023213658resident-evil-2-detonado-claire-a.jpg');
 /*!40000 ALTER TABLE `pacients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +54,7 @@ CREATE TABLE `users` (
   `pic` varchar(5000) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +63,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'dmike','dovmikesoul@gmail.com','2023213026resident evil survivor.png','Readon8330'),(6,'perez','miguel.perez25@unach.mx','2023210505la verdad.png','pbkdf2:sha256:600000$9LuDQjuGlOcMTiDd$8fd6d4c89f20fca778829a30c81ebbe3c2b7ff06aa20e78f1127dd8e780d083f');
+INSERT INTO `users` VALUES (7,'dmike','miguel.perez25@unach.mx','2023141310la verdad.png','pbkdf2:sha256:600000$5iXJahVUmWgn6Zba$7a695b390d03cdb67ace29c290ae22fa6ed8ff794c004886b816a6b8d2564cf0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-08 17:00:20
+-- Dump completed on 2023-08-17 14:29:33

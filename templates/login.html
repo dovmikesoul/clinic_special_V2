@@ -1,11 +1,14 @@
 <head>
-   <title>Acceso</title>
+   <title>Login</title>
 </head>
 {% include 'header.html' %}
 <div class="row justify-content-center">
     <div class="col-md-6">
         <form action="{{ url_for('login') }}" method="post">
             <div class="card">
+                <div class="card-header">
+                Iniciar sesión
+                </div>
                 <div class="card-body">
                     <div class="container text-center mt-3 mb-3">
                         <div class="col ">
@@ -28,7 +31,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <button type="submit" class="btn btn-success mb-2" value="Sign In">Iniciar sesión</button>
+                    <button type="submit" class="btn btn-success mb-2" value="Sign In">Acceso</button>
                 </div>
             </div>
         </form>

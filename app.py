@@ -110,14 +110,17 @@ def login():
         cursor = conn.cursor()
         cursor.execute(sql, data)
         user = cursor.fetchone()
-        verificad = check_password_hash(user[4], _pass)
-        if verificad== True:
-            session['loggedin'] = True
-            session['name'] = user[1]
-            flash('¡Ha iniciado sesión correctamente!')
-            return redirect('/dashboard')
+        if user:
+            verificad = check_password_hash(user[4], _pass)
+            if verificad== True:
+                session['loggedin'] = True
+                session['name'] = user[1]
+                flash('¡Ha iniciado sesión correctamente!')
+                return redirect('/dashboard')
+            else:
+                flash('¡Contraseña incorrecta!')
         else:
-            flash('¡Usuario o contraseña incorrectos!')
+            flash('¡Usuario inexistente!')
     return render_template('login.html')
 
 
@@ -181,19 +184,27 @@ def edit_user(id):
 @app.route('/users/update', methods=['POST'])
 def update_user():
     if 'loggedin' in session:
+        id = request.form['txtID']
         _name = request.form['txtName']
         _email = request.form['txtEmail']
         _pic = request.files['txtPic']
         _pass = request.form['txtPass']
-        id = request.form['txtID']
-        sql = "UPDATE `users` SET `name`=%s,`email`=%s, `pass`=%s WHERE id=%s;"
-        data = (_name, _email, _pass, id)
-        conn = mysql.connect()
-        cursor = conn.cursor()
-
+        _passnew = request.form['txtPassNew']
+        
+        if not _passnew:
+            sql = "UPDATE `users` SET `name`=%s,`email`=%s, `pass`=%s WHERE id=%s;"
+            data = (_name, _email, _pass, id)
+            conn = mysql.connect()
+            cursor = conn.cursor()
+        if _passnew !='':
+            _passnew = __create_password(_passnew)
+            sql = "UPDATE `users` SET `pass`=%s WHERE id=%s;"
+            data = (_passnew, id)
+            conn = mysql.connect()
+            cursor = conn.cursor()
+        
         now = datetime.now()
         tiemp = now.strftime("%Y%H%M%S")
-
         if _pic.filename != '':
             newNamePic = tiemp+_pic.filename
             _pic.save("uploads/"+newNamePic)
@@ -208,7 +219,6 @@ def update_user():
         return redirect('/users')
     else:
         return redirect(url_for('login'))
-    
 
 
 @app.route('/users/create')
@@ -340,7 +350,6 @@ def create_pacient():
     else:
         return redirect(url_for('login'))
     
-        
   
 @app.route('/pacients/store', methods=['POST'])
 def storage_pacient():

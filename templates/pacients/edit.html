@@ -1,3 +1,6 @@
+<head>
+   <title>Editar paciente</title>
+</head>
 {% include 'header.html' %}
 {% for pacient in pacients %}
 <form method="post" action="{{ url_for('update_pacient') }}" enctype="multipart/form-data">
@@ -6,7 +9,7 @@
             Formulario editar paciente
         </div>
         <div class="card-body">
-            <h4 class="card-title">Datos del Paciente</h4>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" value="{{ pacient[0] }}" name="txtID" id="txtID">
             <div class="form-group">
                 Nombre:

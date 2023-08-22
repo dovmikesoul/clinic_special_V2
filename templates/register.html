@@ -3,48 +3,60 @@
 </head>
 {% include 'header.html' %}
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <form action="{{ url_for('register') }}" method="post"  enctype="multipart/form-data">
-                    <div class="container text-center mt-5 mb-5">
-                        <div class="row ">
-                         
-                            <div class="col">
+    <div class="col-md-8">
+        <form action="{{ url_for('register') }}" method="post"  enctype="multipart/form-data">
+            <div class="card">
+                 <div class="card-header">
+                Formulario registro usuario
+                </div>
+                <div class="card-body">
+                    <div class="container text-center mt-3 mb-3">
+                        <div class="col ">
+                            <div class="row">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <label for="InputName" class="form-label">
-                                        <h5>Nombre de usuario</h5>
-                                    </label>
-                                    <input class="form-control" type="text" name="txtName" id="txtName">
-                                </div>
-                                <div class="form-group">
-                                    <label for="InputEmail" class="form-label">
-                                        <h5>Correo electronico</h5>
-                                    </label>
-                                    <input class="form-control" type="text" name="txtEmail" id="txtEmail">
-                                </div>
-                                <div class="form-group">
-                                    <label for="InputPass" class="form-label">
-                                        <h5>Contraseña</h5>
-                                    </label>
-                                    <input class="form-control" type="password" id="txtPass" name="txtPass"><br>
-                                </div>
-                                <div class="form-group">
                                     <label for="InputPic" class="form-label">
-                                        <h5>Foto de usuario</h5>
+                                    <h5>Foto de usuario</h5>
                                     </label>
-                                    <input class="form-control" type="file" name="txtPic" id="txtPic">
+                                    <input class="form-control" type="file" name="txtPic" id="txtPic"> <br>
                                 </div>
-                                <div class="card-footer text-muted">
-                                    <button type="submit" class="btn btn-success mb-2" value="Sign Up">Crear cuenta</button>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="InputName" class="form-label">
+                                            <h5>Nombre de usuario</h5>
+                                        </label>
+                                        <input class="form-control" type="text" name="txtName" id="txtName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputEmail" class="form-label">
+                                            <h5>Correo electronico</h5>
+                                        </label>
+                                        <input class="form-control" type="text" name="txtEmail" id="txtEmail">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="InputPass" class="form-label">
+                                            <h5>Contraseña</h5>
+                                        </label>
+                                        <input class="form-control" type="password" id="txtPass" name="txtPass">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputConfPass" class="form-label">
+                                            <h5>Confirma contraseña</h5>
+                                        </label>
+                                        <input class="form-control" type="password" id="txtConfPass" name="txtConfPass">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </form>
+                        </div>            
+                    </div>    
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-success mb-2" value="Sign Up">Crear cuenta</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 {% include 'footer.html' %}

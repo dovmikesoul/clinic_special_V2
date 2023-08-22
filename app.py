@@ -21,6 +21,7 @@ mysql.init_app(app)
 CARPETA = os.path.join('uploads')
 app.config['CARPETA'] = CARPETA
 
+
 @app.route('/uploads/<namePic>')
 def uploads(namePic):
     return send_from_directory(app.config['CARPETA'], namePic)
@@ -56,37 +57,40 @@ def register():
         _email = request.form['txtEmail']
         _pic = request.files['txtPic']
         _pass = request.form['txtPass']
+        _confpass = request.form['txtConfPass']
 
-        sql = 'SELECT * FROM `users` WHERE name = % s;'
-        data = (_name, )
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute(sql, data)
-        user = cursor.fetchone()
-        if user:
-            flash('!Nombre de usuario ya esta en uso!')
-        elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
-            flash('Correo electronico invalido...')
-        elif not re.match(r'[A-Za-z0-9]+', _name):
-            flash('El nombre de usuario debe contener solo letras y numeros...')
-        elif not _name or not _email or not _pic or not _pass :
-            flash('¡Porfavor rellene todo el formulario!')
-        else:
-            now = datetime.now()
-            tiemp = now.strftime("%Y%H%M%S")
-            newNamePic = tiemp+_pic.filename
-            _pic.save("uploads/"+newNamePic)
-            
-            _pass = __create_password(_pass)
-
-            sql = "INSERT INTO `users` (`id`, `name`, `email`, `pic`, `pass`) VALUES (NULL, %s, %s, %s, %s);"
-            data = (_name, _email, newNamePic, _pass)
+        if _confpass == _pass:
+            sql = 'SELECT * FROM `users` WHERE name = % s;'
+            data = (_name, )
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.execute(sql, data)
-            conn.commit()
-            flash('¡Ha creado su cuenta con exito!')
+            user = cursor.fetchone()
+            if user:
+                flash('!Nombre de usuario ya esta en uso!')
+            elif not _name or not _email or not _pic or not _pass :
+                flash('¡Porfavor rellene todo el formulario!')
+            elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
+                flash('Correo electronico invalido...')
+            elif not re.match(r'[A-Za-z0-9]+', _name):
+                flash('El nombre de usuario debe contener solo letras y numeros...')
+            else:
+                now = datetime.now()
+                tiemp = now.strftime("%Y%H%M%S")
+                newNamePic = tiemp+_pic.filename
+                _pic.save("uploads/"+newNamePic)
+                
+                _pass = __create_password(_pass)
 
+                sql = "INSERT INTO `users` (`id`, `name`, `email`, `pic`, `pass`) VALUES (NULL, %s, %s, %s, %s);"
+                data = (_name, _email, newNamePic, _pass)
+                conn = mysql.connect()
+                cursor = conn.cursor()
+                cursor.execute(sql, data)
+                conn.commit()
+                flash('¡Ha creado su cuenta con exito!')
+        else:
+            flash('¡No se confirmo la contraseña!')
     return render_template('register.html')
 
 
@@ -245,7 +249,6 @@ def storage_user():
         return redirect('/users')
     else:
         return redirect(url_for('login'))
-    
 # FIN CRUD USUARIOS
 
 

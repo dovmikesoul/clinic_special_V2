@@ -15,6 +15,8 @@
     pip install Flask_mysql
     pip install Flask-WTF 
     pip install WTForms
+    
+
 
     pip install email_validator
     pip install validators

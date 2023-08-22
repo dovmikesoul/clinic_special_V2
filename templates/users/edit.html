@@ -1,3 +1,6 @@
+<head>
+   <title>Editar usuario</title>
+</head>
 {% include 'header.html' %}
 {% for user in users %}
 <form method="post" action="{{ url_for('update_user') }}" enctype="multipart/form-data">
@@ -6,7 +9,7 @@
             Formulario editar usere
         </div>
         <div class="card-body">
-            <h4 class="card-title">Datos del usere</h4>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" value="{{ user[0] }}" name="txtID" id="txtID">
             <div class="form-group">
                 Nombre:

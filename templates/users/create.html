@@ -1,11 +1,14 @@
+<head>
+   <title>Agregar usuario</title>
+</head>
 {% include 'header.html' %}
 <form method="post" action="{{ url_for('storage_user') }}" enctype="multipart/form-data">
    <div class="card">
         <div class="card-header">
-            Formulario registro usere
+            Formulario agregar usuario
         </div>
         <div class="card-body">
-            <h4 class="card-title">Datos del usere</h4>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 Nombre:
                 <input  class="form-control" type="text" name="txtName" id="txtName">

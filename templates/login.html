@@ -4,36 +4,34 @@
 {% include 'header.html' %}
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <form action="{{ url_for('login') }}" method="post">
-                    <div class="container text-center mt-5 mb-5">
-                        <div class="row ">
-                          
-                            <div class="col">
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container text-center mt-3 mb-3">
+                        <div class="col ">
+                            <div class="row">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="InputName" class="form-label">
                                         <h5>Usuario</h5>
                                     </label>
-                                    <input class="form-control" type="text" name="txtName" id="txtName">
+                                    <input class="form-control" type="text" name="txtName" id="txtName" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="InputPass" class="form-label">
                                         <h5>Contraseña</h5>
                                     </label>
-                                    <input class="form-control" type="password" id="txtPass" name="txtPass"><br>
-                                    
-                                </div>
-                                <div class="card-footer text-muted">
-                                    <button type="submit" class="btn btn-success mb-2" value="Sign In">Iniciar sesión</button>
+                                    <input class="form-control" type="password" id="txtPass" name="txtPass" autocomplete="off">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-success mb-2" value="Sign In">Iniciar sesión</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 {% include 'footer.html' %}

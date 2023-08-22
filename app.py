@@ -147,8 +147,6 @@ def index_users():
     else:
         return redirect(url_for('login'))
     
-   
-
 
 @app.route('/users/destroy/<int:id>')
 def destroy_user(id):
@@ -156,7 +154,6 @@ def destroy_user(id):
         conn = mysql.connect()
         cursor = conn.cursor()
         cursor.execute("SELECT pic FROM users WHERE id=%s", id)
-
         fila = cursor.fetchall()
         os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))
 
@@ -196,13 +193,16 @@ def update_user():
             data = (_name, _email, _pass, id)
             conn = mysql.connect()
             cursor = conn.cursor()
-        if _passnew !='':
+        elif _passnew !='':
             _passnew = __create_password(_passnew)
             sql = "UPDATE `users` SET `pass`=%s WHERE id=%s;"
             data = (_passnew, id)
             conn = mysql.connect()
             cursor = conn.cursor()
-        
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', _email):
+            flash('Correo electronico invalido...')
+        elif not re.match(r'[A-Za-z0-9]+', _name):
+            flash('El nombre de usuario debe contener solo letras y numeros...')
         now = datetime.now()
         tiemp = now.strftime("%Y%H%M%S")
         if _pic.filename != '':
@@ -240,7 +240,7 @@ def storage_user():
 
         if _name == '' or _email == '' or _pic == '' or _pass == '':
             flash('¡Porfavor rellene el formulario!')
-            return redirect(url_for('create'))
+            return redirect(url_for('create_user'))
 
         now = datetime.now()
         tiemp = now.strftime("%Y%H%M%S")

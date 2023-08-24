@@ -276,7 +276,6 @@ def index_pacients():
         return render_template('pacients/index.html', pacients=pacients)
     else:
         return redirect(url_for('login'))
-    
 
 
 @app.route('/pacients/destroy/<int:id>')

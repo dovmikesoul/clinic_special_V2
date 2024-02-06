@@ -2,5 +2,19 @@
    <title>Panel</title>
 </head>
 {% include 'header.html' %}
-<a href="pacients">Pacientes</a>
-<a href="users">Usuarios</a>
+
+<div class="row justify-content-center">
+   <div class="card col-3">
+      <a href="pacients">
+         <img  class="img-thumbnail"  src="{{ url_for('static', filename='assets/images/pacientes.png') }}" style="width:256px;height:256px;" alt="Pacientes">PACIETNES
+      </a>  
+   </div>
+   <div class="col-1">
+      
+   </div>
+   <div class="card col-3">
+      <a href="users">
+         <img  class="img-thumbnail"  src="{{ url_for('static', filename='assets/images/usuarios.png') }}" style="width:256px;height:256px;" alt="Usuarios">USUARIOS
+      </a>
+   </div>
+</div>

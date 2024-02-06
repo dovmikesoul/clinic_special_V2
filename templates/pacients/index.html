@@ -4,7 +4,14 @@
 {% include 'header.html' %}
     <div class="card">
         <div class="card-header">
-            <a href="{{ url_for('create_pacient') }}" class="btn btn-success">Agregar paciente</a>
+          <div class="row">
+             <div class="col">
+             <a href="{{ url_for('create_pacient') }}" class="btn btn-success">Agregar paciente</a>
+           </div>
+            <div class="col text-end">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-light">Atras</a>
+            </div>
+          </div>
         </div>
         <div class="card-body">
             <div class="container text-center mt-3 mb-3">
@@ -22,7 +29,7 @@
                             {% for pacient in pacients %}
                             <tr>
                                 <td>{{pacient[0]}}</td>
-                                <td><img  class="img-thumbnail" src="uploads/{{pacient[3]}}" style="width:100px;height:100px;" alt="Foto del empleado"></td>
+                                <td><img  class="img-thumbnail" src="uploads/{{pacient[3]}}" style="width:100px;height:100px;" alt="Foto del paciente"></td>
                                 <td>{{pacient[1]}}</td>
                                 <td>{{pacient[2]}}</td>
                                 <td> 
@@ -36,4 +43,3 @@
             </div>    
         </div>
     </div>
-{% include 'footer.html' %}

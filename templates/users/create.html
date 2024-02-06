@@ -7,7 +7,12 @@
         <form method="post" action="{{ url_for('storage_user') }}" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-header">
-                    Formulario agregar usuario
+                   <div class="row">
+                        <div class="col">Formulario agregar usuario</div>
+                        <div class="col text-end"> 
+                            <a href="{{ url_for('index_users') }}" class="btn btn-light">Atras</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="container text-center mt-3 mb-3">

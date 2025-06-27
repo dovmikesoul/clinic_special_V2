@@ -1,6 +1,7 @@
 # Clinica de Especialidades V2.2
 ## Version de Python que se uso
     Python 3.11.3
+    Python 3.13.0
 
 
 ## Entorno virtual

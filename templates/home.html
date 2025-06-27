@@ -1,87 +1,109 @@
 {% include 'header.html' %}
+
 <head>
-   <title>Inicio</title>
+    <title>Inicio</title>
 </head>
- <div class="container">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ url_for('static', filename='assets/images/carousel/1.jpg') }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block text-dark">
-                        <h1>Clinica de especialidades</h1>
-                        <h3>Contamos con la tecnologia mas reciente.</h3>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='assets/images/carousel/2.jpg') }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block text-dark">
-                        <h1>Clinica de especialidades</h1>
-                        <h3>Nos enorgulece dar una buena atencion al paciente.</h3>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='assets/images/carousel/3.jpg') }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block text-dark">
-                        <h1>Clinica de especialidades</h1>
-                        <h3>Nuestros personal de salud cuenta con la capacitacion mas actual.</h3>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+<div class="container">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
-        <div class="row-cols-1 justify-content-center">
-            <div class="text-center mt-5">
-                <h3>Especialidades destacadas</h3>
-                <div class="card-footer text-muted">
-                    Contamos con expertos.
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='assets/images/carousel/1.jpg') }}" class="d-block w-100"
+                    alt="...">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h1>Clinica de especialidades</h1>
+                    <h3>Contamos con la tecnologia mas reciente.</h3>
                 </div>
             </div>
-            
-            <div class="row row-cols-1 row-cols-md-3 mt-1 g-3">
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='assets/images/card/1.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Especialidad: Cardiología</h5>
-                            <p class="card-text">La cardiología es la rama de la medicina que se encarga del estudio, prevención, diagnóstico y tratamiento de las enfermedades del corazón y del sistema circulatorio. Es médica, pero no quirúrgica; los especialistas en el abordaje quirúrgico del corazón son el cirujano cardiaco o el cirujano cardiovascular, una especialidad de cirugía general.</p>
-                        </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='assets/images/carousel/2.jpg') }}" class="d-block w-100"
+                    alt="...">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h1>Clinica de especialidades</h1>
+                    <h3>Nos enorgullece dar una buena atención al paciente.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='assets/images/carousel/3.jpg') }}" class="d-block w-100"
+                    alt="...">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                    <h1>Clinica de especialidades</h1>
+                    <h3>Nuestro personal de salud cuenta con la capacitación más actual.</h3>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="row-cols-1 justify-content-center">
+        <div class="text-center mt-5">
+            <h3>Especialidades destacadas</h3>
+            <div class="card-footer text-muted">
+                Contamos con expertos.
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 mt-1 g-3">
+            <div class="col">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='assets/images/card/1.jpg') }}" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Especialidad: Cardiología</h5>
+                        <p class="card-text">La cardiología es la rama de la medicina que se encarga del estudio,
+                            prevención, diagnóstico y tratamiento de las enfermedades del corazón y del sistema
+                            circulatorio. Es médica, pero no quirúrgica; los especialistas en el abordaje quirúrgico del
+                            corazón son el cirujano cardiaco o el cirujano cardiovascular, una especialidad de cirugía
+                            general.</p>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='assets/images/card/22.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Especialidad: Pediatría</h5>
-                            <p class="card-text">La pediatría es la especialidad médica y es la rama de la medicina que involucra la atención médica de bebés, niños y adolescentes. El término procede del griego paidos (niño) e iatrea (curación), pero su contenido es mucho mayor que la curación de las enfermedades de los niños, ya que la pediatría estudia tanto al niño sano como al enfermo.</p>
-                        </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='assets/images/card/22.jpg') }}" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Especialidad: Pediatría</h5>
+                        <p class="card-text">La pediatría es la especialidad médica y es la rama de la medicina que
+                            involucra la atención médica de bebés, niños y adolescentes. El término procede del griego
+                            paidos (niño) e iatrea (curación), pero su contenido es mucho mayor que la curación de las
+                            enfermedades de los niños, ya que la pediatría estudia tanto al niño sano como al enfermo.
+                        </p>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='assets/images/card/33.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Especialidad: Oncología médica</h5>
-                            <p class="card-text">Centrada en la atención del enfermo con cáncer como un todo, al que se trata con quimioterapia, terapia con hormonas y otros medicamentos, a diferencia de la oncología quirúrgica, que se encarga de la extirpación del tumor y de los tejidos circundantes durante una operación quirúrgica, y de la oncología radioterápica, que usa la radioterapia para tratar el cáncer.</p>
-                        </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='assets/images/card/33.jpg') }}" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Especialidad: Oncología médica</h5>
+                        <p class="card-text">Centrada en la atención del enfermo con cáncer como un todo, al que se
+                            trata con quimioterapia, terapia con hormonas y otros medicamentos, a diferencia de la
+                            oncología quirúrgica, que se encarga de la extirpación del tumor y de los tejidos
+                            circundantes durante una operación quirúrgica, y de la oncología radioterápica, que usa la
+                            radioterapia para tratar el cáncer.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
+</div>
+<br>
 {% include 'footer.html' %}

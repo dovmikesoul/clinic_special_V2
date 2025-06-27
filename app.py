@@ -1,22 +1,18 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flaskext.mysql import MySQL
 from flask_wtf import CSRFProtect
 from datetime import datetime
 import os, re
 
+from db import mysql, init_db  
 
 app = Flask(__name__)
 app.secret_key = "See_Im_a_suicidal_kid_with_no_future_Im_quicker_to_bust_your_face_with_a_baseball_bat_before_I_shoot_ya"
+
 csrf = CSRFProtect(app)
 
-mysql = MySQL()
-app.config['MYSQL_DATABASE_HOST'] = '127.0.0.1'
-app.config['MYSQL_DATABASE_USER'] = 'Miguel'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Develop22'
-app.config['MYSQL_DATABASE_DB'] = 'clinic_special_v2'
-mysql.init_app(app)
 
+init_db(app)
 
 CARPETA = os.path.join('uploads')
 app.config['CARPETA'] = CARPETA

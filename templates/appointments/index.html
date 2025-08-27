@@ -1,0 +1,49 @@
+<head>
+    <title>Citas</title>
+</head>
+{% include 'header.html' %}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <a href="{{ url_for('create_appointment') }}" class="btn btn-success">Nueva cita</a>
+            </div>
+            <div class="col text-end">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-light">Atrás</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container text-center mt-3 mb-3">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Paciente</th>
+                        <th>Doctor</th>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in appointments %}
+                    <tr>
+                        <td>{{a[0]}}</td>
+                        <td>{{a[1]}}</td>
+                        <td>{{a[2]}}</td>
+                        <td>{{a[3]}}</td>
+                        <td>{{a[4]}}</td>
+                        <td>{{a[5]}}</td>
+                        <td>
+                            <a href="appointments/edit/{{a[0]}}" class="btn btn-warning">Editar</a> |
+                            <a href="appointments/delete/{{a[0]}}" onclick="return confirm('¿Cancelar cita?')" class="btn btn-danger">Cancelar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

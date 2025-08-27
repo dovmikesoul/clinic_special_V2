@@ -2,18 +2,66 @@
    <title>Panel</title>
 </head>
 {% include 'header.html' %}
-<div class="row justify-content-center">
+<style>
+   .center-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+   }
+
+   .card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+      padding: 1rem;
+   }
+
+   .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+   }
+
+   .card a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+      display: block;
+   }
+
+   .card img {
+      margin-bottom: 1rem;
+   }
+</style>
+<div class="center-row">
    <div class="card col-3">
       <a href="pacients">
-         <img  class="img-thumbnail"  src="{{ url_for('static', filename='assets/images/pacientes.png') }}" style="width:256px;height:256px;" alt="Pacientes">PACIETNES
-      </a>  
-   </div>
-   <div class="col-1">
-      
+         <img class="img-thumbnail" src="{{ url_for('static', filename='assets/images/pacientes.png') }}"
+            style="width:256px;height:256px;" alt="Pacientes">
+         PACIENTES
+      </a>
    </div>
    <div class="card col-3">
       <a href="users">
-         <img  class="img-thumbnail"  src="{{ url_for('static', filename='assets/images/usuarios.png') }}" style="width:256px;height:256px;" alt="Usuarios">USUARIOS
+         <img class="img-thumbnail" src="{{ url_for('static', filename='assets/images/usuarios.png') }}"
+            style="width:256px;height:256px;" alt="Usuarios">
+         USUARIOS
       </a>
    </div>
-</div>
+
+   <div class="card col-3">
+      <a href="doctors">
+         <img class="img-thumbnail" src="{{ url_for('static', filename='assets/images/usuarios.png') }}"
+            style="width:256px;height:256px;" alt="Usuarios">
+         DOCTORES
+      </a>
+   </div>
+
+      <div class="card col-3">
+      <a href="appointments">
+         <img class="img-thumbnail" src="{{ url_for('static', filename='assets/images/usuarios.png') }}"
+            style="width:256px;height:256px;" alt="Usuarios">
+         CITAS
+      </a>
+   </div>
+</div></a></div>

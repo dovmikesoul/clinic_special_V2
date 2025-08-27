@@ -1,0 +1,49 @@
+<head>
+   <title>Doctores</title>
+</head>
+{% include 'header.html' %}
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <a href="{{ url_for('create_doctor') }}" class="btn btn-success">Agregar doctor</a>
+            </div>
+            <div class="col text-end">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-light">Atras</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container text-center mt-3 mb-3">
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Foto</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Especialidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for doctor in doctors %}
+                    <tr>
+                        <td>{{doctor[0]}}</td>
+                        <td><img class="img-thumbnail" src="uploads/{{doctor[5]}}" style="width:100px;height:100px;" alt="Foto doctor"></td>
+                        <td>{{doctor[1]}}</td>
+                        <td>{{doctor[2]}}</td>
+                        <td>{{doctor[3]}}</td>
+                        <td>{{doctor[4]}}</td>
+                        <td> 
+                            <a class="btn btn-warning" href="doctors/edit/{{ doctor[0] }}">Editar</a> |
+                            <a onclick="return confirm('¿Desea borrar el registro?')" class="btn btn-danger" href="doctors/destroy/{{ doctor[0] }}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

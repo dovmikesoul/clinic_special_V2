@@ -1,0 +1,41 @@
+<head>
+   <title>Agregar Doctor</title>
+</head>
+{% include 'header.html' %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form method="post" action="{{ url_for('store_doctor') }}" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">Formulario agregar doctor</div>
+                        <div class="col text-end"> 
+                            <a href="{{ url_for('index_doctors') }}" class="btn btn-light">Atras</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="form-group">Nombre:
+                        <input class="form-control" type="text" name="txtName">
+                    </div>
+                    <div class="form-group">Correo:
+                        <input class="form-control" type="email" name="txtEmail">
+                    </div>
+                    <div class="form-group">Teléfono:
+                        <input class="form-control" type="text" name="txtPhone">
+                    </div>
+                    <div class="form-group">Especialidad:
+                        <input class="form-control" type="text" name="txtSpecialty">
+                    </div>
+                    <div class="form-group">Foto:
+                        <input class="form-control" type="file" name="txtPic">
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <input class="btn btn-success" type="submit" value="Agregar">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

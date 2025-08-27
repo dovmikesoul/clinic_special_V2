@@ -469,16 +469,21 @@ def store_doctor():
     phone = request.form['txtPhone']
     specialty = request.form['txtSpecialty']
     pic = request.files['txtPic']
+    now = datetime.now()
+    tiemp = now.strftime("%Y%H%M%S")
 
-    newFileName = ''
-    if pic:
-        newFileName = datetime.now().strftime("%Y%H%M%S") + pic.filename
-        pic.save(os.path.join(app.config['UPLOAD_FOLDER'], newFileName))
+    if pic.filename != '':
+        newFileName = tiemp + pic.filename
+        pic.save(os.path.join('uploads', newFileName))
+        sql = "INSERT INTO doctors (name, email, phone, specialty, pic) VALUES (%s, %s, %s, %s, %s)"
+        data = (name, email, phone, specialty, newFileName)
+    else:
+        sql = "INSERT INTO doctors (name, email, phone, specialty) VALUES (%s, %s, %s, %s)"
+        data = (name, email, phone, specialty)
 
     conn = mysql.connect()
     cursor = conn.cursor()
-    sql = "INSERT INTO doctors (name,email,phone,specialty,pic) VALUES (%s,%s,%s,%s,%s)"
-    cursor.execute(sql, (name, email, phone, specialty, newFileName))
+    cursor.execute(sql, data)
     conn.commit()
 
     flash("Doctor agregado correctamente")
@@ -514,14 +519,19 @@ def update_doctor():
     conn = mysql.connect()
     cursor = conn.cursor()
 
-    if pic:
-        newFileName = datetime.now().strftime("%Y%H%M%S") + pic.filename
-        pic.save(os.path.join(app.config['UPLOAD_FOLDER'], newFileName))
-        sql = "UPDATE doctors SET name=%s,email=%s,phone=%s,specialty=%s,pic=%s WHERE id=%s"
-        cursor.execute(sql, (name, email, phone, specialty, newFileName, id))
+    now = datetime.now()
+    tiemp = now.strftime("%Y%H%M%S")
+
+    if pic.filename != '':
+        newFileName = tiemp + pic.filename
+        pic.save(os.path.join('uploads', newFileName))
+        sql = "UPDATE doctors SET name=%s, email=%s, phone=%s, specialty=%s, pic=%s WHERE id=%s"
+        data = (name, email, phone, specialty, newFileName, id)
     else:
-        sql = "UPDATE doctors SET name=%s,email=%s,phone=%s,specialty=%s WHERE id=%s"
-        cursor.execute(sql, (name, email, phone, specialty, id))
+        sql = "UPDATE doctors SET name=%s, email=%s, phone=%s, specialty=%s WHERE id=%s"
+        data = (name, email, phone, specialty, id)
+
+    cursor.execute(sql, data)
     conn.commit()
 
     flash("Doctor actualizado correctamente")

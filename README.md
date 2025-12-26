@@ -5,14 +5,15 @@
 
 
 ## Entorno virtual
-### Se creo el entorno virtual dentro de la carpeta principal del proyecto con el siguiente comando:
+## 1 Se crea el entorno virtual dentro de la carpeta principal del proyecto con el siguiente comando:
     py -3 -m venv venv
-### Para activar el entorno virtual se uso el siguiente comando:
+## 2 Para activar el entorno virtual se usan los siguientes dos comandos:
+###
     source ./venv/Scripts/activate
-    
+### 
     .\venv\Scripts\Activate.ps1
 
-### PowerShell
+## 3 alternativa PowerShell
     .\venv\Scripts\Activate.ps1
 
 ### Librerias usadas con el comando: pip install

@@ -9,8 +9,11 @@
     py -3 -m venv venv
 ### Para activar el entorno virtual se uso el siguiente comando:
     source ./venv/Scripts/activate
+    
     .\venv\Scripts\Activate.ps1
 
+### PowerShell
+    .\venv\Scripts\Activate.ps1
 
 ### Librerias usadas con el comando: pip install
     Flask
